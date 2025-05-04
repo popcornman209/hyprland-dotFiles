@@ -1,0 +1,177 @@
+// -*- mode: jsonc -*-
+{
+    "spacing": 5,
+    "modules-left": [
+        "custom/distro",
+        "clock",
+        "cpu",
+        "memory",
+        "temperature",
+        "custom/media"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "custom/vpn",
+        "network",
+        "bluetooth",
+        "power-profiles-daemon",
+        "backlight",
+        "battery"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "active": "",
+            "default": "" 
+        },
+           "persistent-workspaces": {
+             "*": [ 1,2, 3, 4, 5, 6 ]
+           }
+    },
+    "hyprland/window": {
+        "format": "",
+        "icon": true
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%I:%M:%S %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%m/%d/%Y}",
+        "interval": 1
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "foot btop"
+    },
+    "memory": {
+        "format": "{}%  ",
+        "on-click": "foot btop"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", "󰈸"],
+        "tooltip": false,
+        "on-click": "foot btop"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon} ",
+        "format-full": "{capacity}% {icon} ",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "rofi-bluetooth"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{signalStrength}%  ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+        "tooltip-format": "{essid}",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected ⚠ ",
+        "on-click": "foot nmtui"
+    },
+    "custom/vpn": {
+        "format": "{text}{icon} ",
+        "return-type": "json",
+        "max-length": 40,
+        "escape": true,
+        "format-icons": {
+            "connected": "",
+            "disconnected": ""
+        },
+        // Script in resources folder
+        "exec": "$HOME/.config/waybar/scripts/vpn.py 2> /dev/null",
+        "on-click": "$HOME/.config/waybar/scripts/toggleVpn.sh"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "firefox": "",
+            "vlc": "󰕼",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/distro": {
+        "format" : "",
+        "class": "custom-distro",
+		"tooltip": false,
+        "menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/scripts/powerMenu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown now",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+            "lock": "wallpaper=\"$(swww query | grep -oP 'image: \\K.*')\" hyprlock",
+            "logout": "hyprctl dispatch exit"
+		}
+    }
+}
