@@ -1,5 +1,7 @@
 # hyprland-dotFiles
-these are the dot files for my hyprland rice! if you have any questions feel more than free reach out however you want :)
+these are the dot files for my hyprland rice! if you have any questions feel more than free reach out however you want :)<br />
+
+also if anybody ever decides to use anything from this lmk id love to see it!
 
 ![rando image](images/rice1.png)
 
