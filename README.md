@@ -1,15 +1,42 @@
 # hyprland-dotFiles
-these are the dot files for my hyprland rice! if you have any questions reach out however you want :)
+these are the dot files for my hyprland rice! if you have any questions feel more than free reach out however you want :)
 
 ![rando image](images/rice1.png)
 
-when it comes to dependancies, honestly i dont have a full list, but heres a few i know youll need (this is for arch btw)
-```
+> [!WARNING]
+> check all the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that you might not have!
+
+## packages
+
+when it comes to dependancies, i havent tested if this is everything needed, there could be a few missing, but heres everything i can think of. also please dont just copy paste these, if you dont want something, dont install it! this is just what i use. <br />
+
 pacman:
-    hyprland
-    waybar
-    fastfetch (optional, i put my config in there tho)
-
+```
+hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon wl-clipboard grim slurp networkmanager pulseaudio
+```
+and aur:
+```
+rofi-bluetooth light
+```
+programs i recommend (not needed, install whatever alternatives you want)
+```
+kitty
+dolphin
+firefox
+code (pacman) or visual-studio-code (aur)
+spotify (i recommend spicetify to make pretty)
+discord / vesktop (what i use)
+steam
+fish shell
 ```
 
-hold on gtg ill just upload what i have so far lmao
+## themes for programs i use
+[vencord/vesktop](https://www.google.com/search?client=firefox-b-1-d&q=catppuccin+discord)<br />
+[kitty](https://github.com/catppuccin/kitty)<br />
+[grub](https://github.com/catppuccin/grub)<br />
+[sddm](https://github.com/Keyitdev/sddm-astronaut-theme)<br />
+[steam](https://github.com/tkashkin/Adwaita-for-Steam)<br />
+[fish shell](https://github.com/IlanCosman/tide)<br />
+[firefox](https://addons.mozilla.org/en-US/firefox/addon/catppuccin/)<br />
+
+[and many styles for websites](https://github.com/catppuccin/userstyles)
