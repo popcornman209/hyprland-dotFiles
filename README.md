@@ -33,12 +33,12 @@ fish shell
 ```
 
 ## themes for programs i use
-[vencord/vesktop](https://www.google.com/search?client=firefox-b-1-d&q=catppuccin+discord)<br />
-[kitty](https://github.com/catppuccin/kitty)<br />
-[grub](https://github.com/catppuccin/grub)<br />
-[sddm](https://github.com/Keyitdev/sddm-astronaut-theme)<br />
-[steam](https://github.com/tkashkin/Adwaita-for-Steam)<br />
-[fish shell](https://github.com/IlanCosman/tide)<br />
-[firefox](https://addons.mozilla.org/en-US/firefox/addon/catppuccin/)<br />
+[vencord/vesktop catppuccin](https://www.google.com/search?client=firefox-b-1-d&q=catppuccin+discord)<br />
+[kitty catppuccin](https://github.com/catppuccin/kitty)<br />
+[grub catppuccin](https://github.com/catppuccin/grub)<br />
+[sddm astronaut theme](https://github.com/Keyitdev/sddm-astronaut-theme)<br />
+[steam gtk/catppuccin](https://github.com/tkashkin/Adwaita-for-Steam)<br />
+[fish shell tide theme](https://github.com/IlanCosman/tide)<br />
+[firefox catppuccin](https://addons.mozilla.org/en-US/firefox/addon/catppuccin/)<br />
 
-[and many styles for websites](https://github.com/catppuccin/userstyles)
+[and many catppuccin custom styles for websites](https://github.com/catppuccin/userstyles)
