@@ -18,7 +18,7 @@ hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon w
 ```
 and aur:
 ```
-rofi-bluetooth light
+rofi-bluetooth-git light
 ```
 programs i recommend (not needed, install whatever alternatives you want)
 ```
