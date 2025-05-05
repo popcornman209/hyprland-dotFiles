@@ -18,7 +18,11 @@ hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon w
 ```
 and aur:
 ```
-rofi-bluetooth-git light
+rofi-bluetooth-git light ttf-jetbrains-mono-nerd ttf-cascadia-mono-nerd
+```
+note if your brightness keys dont work, you need to allow "light" to run without sudo:
+```
+sudo chmod +s /usr/bin/light
 ```
 programs i recommend (not needed, install whatever alternatives you want)
 ```
