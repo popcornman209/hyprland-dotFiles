@@ -122,6 +122,7 @@ window#waybar.chromium {
 
 #power-profiles-daemon.performance {
     border: 3px solid #f38ba8;
+    padding-right: 13px;
 }
 
 #power-profiles-daemon.balanced {
