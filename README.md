@@ -11,7 +11,10 @@ also if anybody ever decides to use anything from this lmk id love to see it!
 > check the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that you might not have!
 
 move everything inside of the `config/` folder goes in your local `~/.config/`, as well as put the entire `scripts/` folder going into `~/Documents/` <br />
-if you want the scripts folder somewhere else, youll have to change hyprlands keybind config to use the scripts in the new folder.
+
+if you want the scripts folder somewhere else, youll have to change hyprlands keybind config to use the scripts in the new folder. <br />
+
+there is also a one color version of the waybar config, just delete `~/.config/waybar/style.css` and rename `stylePink.css` to `style.css`, both of these you can modify to be whatever you want :)
 
 ## packages
 

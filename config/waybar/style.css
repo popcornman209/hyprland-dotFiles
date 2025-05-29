@@ -75,6 +75,7 @@ tooltip {
     padding: 0 10px;
     background-color: #1e1e2e;
     color: #cdd6f4;
+    opacity: 1;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

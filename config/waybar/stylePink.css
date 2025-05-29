@@ -1,0 +1,116 @@
+* {
+    padding: 2px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "CaskaydiaMono Nerd Font" ;
+    min-height: 20px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    color: #cdd6f4;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+#workspaces button {
+    padding-right: 6px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: transparent;
+    color: #cdd6f4;
+}
+
+#workspaces button:hover {
+    color: #f5c2e7;
+}
+
+#workspaces button.empty {
+    color: #7f849c;
+}
+
+#workspaces button.active {
+    color: #f5c2e7;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-media,
+#custom-vpn,
+#custom-distro,
+#tray,
+#workspaces,
+#power-profiles-daemon,
+tooltip {
+    padding: 0 10px;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border: 3px solid #f5c2e7;
+    opacity: 0.9;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#custom-distro {
+    padding-right: 13px;
+}
+
+#power-profiles-daemon {
+    padding-right: 18px;
+}
+
+#power-profiles-daemon.performance {
+    padding-right: 13px;
+}
+
+#cpu {
+    padding-right: 15px
+}
+
+#custom-media {
+    min-width: 100px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#GtkSeparatorMenuItem {
+    border-radius: 0px;
+    padding: 0px;
+}
