@@ -157,8 +157,10 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources folder
+        "on-click": "playerctl play-pause",
+        "on-double-click": "playerctl next",
+        "on-triple-click": "playerctl previous"
     },
     "custom/distro": {
         "format" : "",

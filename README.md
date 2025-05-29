@@ -5,8 +5,13 @@ also if anybody ever decides to use anything from this lmk id love to see it!
 
 ![rando image](images/rice1.png)
 
+## setup
+
 > [!WARNING]
-> check all the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that you might not have!
+> check the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that you might not have!
+
+move everything inside of the `config/` folder goes in your local `~/.config/`, as well as put the entire `scripts/` folder going into `~/Documents/` <br />
+if you want the scripts folder somewhere else, youll have to change hyprlands keybind config to use the scripts in the new folder.
 
 ## packages
 

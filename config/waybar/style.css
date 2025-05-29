@@ -24,6 +24,10 @@ window#waybar.chromium {
     border: none;
 }
 
+tooltip {
+    border: 3px solid #f5c2e7;
+}
+
 #workspaces {
     border: 3px solid #b4befe;
 }
