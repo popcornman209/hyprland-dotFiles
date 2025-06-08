@@ -22,7 +22,7 @@ when it comes to dependancies, i havent tested if this is everything needed, the
 
 pacman:
 ```
-hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon wl-clipboard grim slurp networkmanager pulseaudio
+hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon wl-clipboard grim slurp networkmanager pulseaudio mako libnotify
 ```
 and aur:
 ```
@@ -31,6 +31,10 @@ rofi-bluetooth-git light ttf-jetbrains-mono-nerd ttf-cascadia-mono-nerd
 note if your brightness keys dont work, you need to allow "light" to run without sudo:
 ```
 sudo chmod +s /usr/bin/light
+```
+also for the notification client you have to apply the config
+```
+mako --config ~/.config/mako/config
 ```
 programs i recommend (not needed, install whatever alternatives you want)
 ```

@@ -1,0 +1,23 @@
+font=CaskaydiaMono Nerd Font 13
+format=<b>%s ⏵</b> %a\n%b
+sort=-time
+output=eDP-1
+layer=overlay
+anchor=top-right
+background-color=#24273a
+width=350
+height=200
+margin=5
+padding=0,0,0
+outer-margin=0,4
+border-size=4
+border-color=#f5bde6
+border-radius=8
+icons=0
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=1
+
+[urgency=high]
+border-color=#ed8796
+default-timeout=0
