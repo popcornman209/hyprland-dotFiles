@@ -1,19 +1,23 @@
 #!/bin/bash
 
+# EDITOR="kitty -e nvim"
+# EDITOR="code"
+EDITOR="zeditor"
+
 CHOICE=$(printf "Hyprland\nWaybar\nScripts\nFish" | rofi -dmenu -p "Configuration")
 
 case "$CHOICE" in
   Hyprland)
-    code ~/.config/hypr
+    eval "$EDITOR ~/.config/hypr"
     ;;
   Waybar)
-    code ~/.config/waybar
+    eval "$EDITOR ~/.config/waybar"
     ;;
   Scripts)
-  	code ~/Documents/scripts
+  	eval "$EDITOR ~/Documents/scripts"
   	;;
   Fish)
-    code ~/.config/fish/config.fish
+    eval "$EDITOR ~/.config/fish/config.fish"
     ;;
   *)
   	echo nothing selected

@@ -1,8 +1,14 @@
 #!/bin/bash
 
-CHOICE=$(printf "Shutdown\nReboot\nExit Hyprland" | rofi -dmenu -p "Power")
+CHOICE=$(printf "Lock\nSuspend\nShutdown\nReboot\nExit Hyprland" | rofi -dmenu -p "Power")
 
 case "$CHOICE" in
+  Lock)
+    loginctl lock-session
+    ;;
+  Suspend)
+    systemctl suspend
+    ;;
   Shutdown)
     shutdown now
     ;;

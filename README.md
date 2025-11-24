@@ -8,21 +8,21 @@ also if anybody ever decides to use anything from this lmk id love to see it!
 ## setup
 
 > [!WARNING]
-> check the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that you might not have!
+> check the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that your keyboard might not have!
 
-move everything inside of the `config/` folder goes in your local `~/.config/`, as well as put the entire `scripts/` folder going into `~/Documents/` <br />
+move everything inside of the `config/` folder into your local `~/.config/`, as well as put the entire `scripts/` folder going into `~/Documents/` <br />
 
-if you want the scripts folder somewhere else, youll have to change hyprlands keybind config to use the scripts in the new folder. <br />
+if you want the scripts folder somewhere else, youll have to edit the configs to match. <br />
 
-there is also a one color version of the waybar config, just delete `~/.config/waybar/style.css` and rename `stylePink.css` to `style.css`, both of these you can modify to be whatever you want :)
+there is also a one color pink version of the waybar config, just rename `~/.config/waybar/style.css` to something else and rename `stylePink.css` to `style.css`
 
 ## packages
 
-when it comes to dependancies, i havent tested if this is everything needed, there could be a few missing, but heres everything i can think of. also please dont just copy paste these, if you dont want something, dont install it! this is just what i use. <br />
+when it comes to dependancies, I havent tested if this is everything needed, there could be a few missing, but heres everything i can think of. also please dont just copy paste these, if you dont want something, dont install it! this is just what i use. <br />
 
 pacman:
 ```
-hyprland waybar hyprlock foot btop swww rofi imagemagick power-profiles-daemon wl-clipboard grim slurp networkmanager pulseaudio mako libnotify
+hyprland hypridle hyprlock waybar foot btop swww rofi imagemagick power-profiles-daemon wl-clipboard grim slurp networkmanager pulseaudio mako libnotify
 ```
 and aur:
 ```
@@ -36,14 +36,14 @@ also for the notification client you have to apply the config
 ```
 mako --config ~/.config/mako/config
 ```
-programs i recommend (not needed, install whatever alternatives you want)
+programs i recommend (you can install alternatives, just note youll have to edit the configs accordingly)
 ```
 kitty
 dolphin
 firefox
-code (pacman) or visual-studio-code (aur)
+zed
 spotify (i recommend spicetify to make pretty)
-discord / vesktop (what i use)
+vesktop (discord client)
 steam
 fish shell
 ```

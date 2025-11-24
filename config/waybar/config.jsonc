@@ -54,18 +54,18 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "foot btop"
+        "on-click": "kitty -e btop"
     },
     "memory": {
         "format": "{}%  ",
-        "on-click": "foot btop"
+        "on-click": "kitty -e btop"
     },
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", "󰈸"],
         "tooltip": false,
-        "on-click": "foot btop"
+        "on-click": "kitty -e btop"
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -113,7 +113,7 @@
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected ⚠ ",
-        "on-click": "foot nmtui"
+        "on-click": "kitty -e nmtui"
     },
     "custom/vpn": {
         "format": "{text}{icon} ",
@@ -172,7 +172,7 @@
 			"shutdown": "shutdown now",
 			"reboot": "reboot",
 			"suspend": "systemctl suspend",
-            "lock": "wallpaper=\"$(swww query | grep -oP 'image: \\K.*')\" hyprlock",
+            "lock": "loginctl lock-session",
             "logout": "hyprctl dispatch exit"
 		}
     }
