@@ -14,7 +14,9 @@ move everything inside of the `config/` folder into your local `~/.config/`, as 
 
 if you want the scripts folder somewhere else, youll have to edit the configs to match. <br />
 
-there is also a one color pink version of the waybar config, just rename `~/.config/waybar/style.css` to something else and rename `stylePink.css` to `style.css`
+there is also a one color pink version of the waybar config, just rename `~/.config/waybar/style.css` to something else and rename `stylePink.css` to `style.css` <br />
+
+generally id recommend putting the wallpapers in ~/.local/share/wallpapers but you can put them anywhere, just change the path in scripts/wallpaper.sh. also credit to the wallpapers in the orangci folder to [this repo](https://github.com/orangci/walls-catppuccin-mocha)
 
 ## packages
 
