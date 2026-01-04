@@ -14,5 +14,6 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin-mocha"
+//@theme "/home/leo/.config/rofi/themes/catppuccin-mocha.rasi"
 
+@theme "/home/leo/.config/rofi/themes/catppuccin-default.rasi"

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# EDITOR="kitty -e nvim"
+EDITOR="kitty -e nvim"
 # EDITOR="code"
-EDITOR="zeditor"
+# EDITOR="zeditor"
 
 CHOICE=$(printf "Hyprland\nWaybar\nScripts\nFish" | rofi -dmenu -p "Configuration")
 

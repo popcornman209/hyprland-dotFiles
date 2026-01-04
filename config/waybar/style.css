@@ -68,6 +68,7 @@ tooltip {
 #pulseaudio,
 #custom-media,
 #custom-vpn,
+#custom-hyprsunset,
 #custom-distro,
 #tray,
 #workspaces,
@@ -194,6 +195,15 @@ tooltip {
 
 #custom-vpn.disconnected {
     border: 3px solid #f38ba8;
+}
+
+#custom-hyprsunset {
+    border: 3px solid #fab387;
+    padding-right: 16px;
+}
+
+#custom-hyprsunset.night {
+    border: 3px solid #89b4fa;
 }
 
 #temperature {

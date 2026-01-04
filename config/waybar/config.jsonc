@@ -19,6 +19,7 @@
         "network",
         "bluetooth",
         "power-profiles-daemon",
+        "custom/hyprsunset",
         "backlight",
         "battery"
     ],
@@ -130,7 +131,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": "󰝟 {icon} {format_source}",
         "format-muted": "󰝟 {format_source}",
@@ -175,5 +176,17 @@
             "lock": "loginctl lock-session",
             "logout": "hyprctl dispatch exit"
 		}
+    },
+    "custom/hyprsunset": {
+        "format": "{icon}",
+        "exec": "$HOME/.config/waybar/scripts/hyprsunset.sh",
+        "return-type": "json",
+        "format-icons": {
+            "day": "",
+            "night": ""
+        },
+        "interval": 5,
+        "on-click": "$HOME/.config/waybar/scripts/hyprsunset.sh toggle",
+        "on-click-right": "hyprctl hyprsunset identity"
     }
 }
