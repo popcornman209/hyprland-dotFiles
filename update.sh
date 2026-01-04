@@ -15,7 +15,12 @@ echo "copying scripts.."
 cp -r ~/Documents/scripts/* scripts/
 
 if [[ -n "$1" ]]; then
+	echo "updating github..."
 	git add .
 	git commit -m "$1"
 	git push
+	echo "uploaded to github..."
+else
+	echo "no commit supplied, skipping github"
 fi
+echo "complete!"
