@@ -114,15 +114,20 @@ class PlayerManager:
         artist = player.get_artist()
         title = player.get_title()
 
+        if player_name == "spotify":
+            prefix = f"%{player.props.volume*100:.0f}"
+        else: prefix = ""
         track_info = ""
-        if player_name == "spotify" and "mpris:trackid" in metadata.keys() and ":ad:" in player.props.metadata["mpris:trackid"]:
-            track_info = "Advertisement"
-        elif artist is not None and title is not None:
-            track_info = f"{artist} - {title}"
-            if len(track_info) > 40: track_info = title
-        else:
-            track_info = title
 
+        if player_name == "spotify" and "mpris:trackid" in metadata.keys() and ":ad:" in player.props.metadata["mpris:trackid"]:
+            track_info = f"{prefix} Advertisement"
+        elif artist is not None and title is not None:
+            track_info = f"{prefix} {artist} - {title}"
+            if len(track_info) > 40: track_info = f"{prefix} {title}"
+        else:
+            track_info = f"{prefix} {title}"
+
+        
         # if track_info:
         #     if player.props.status == "Playing":
         #         track_info = " " + track_info
