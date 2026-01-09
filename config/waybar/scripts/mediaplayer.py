@@ -10,6 +10,7 @@ import signal
 import gi
 import json
 import os
+import time
 from typing import List
 
 logger = logging.getLogger(__name__)
@@ -60,6 +61,15 @@ class PlayerManager:
         player.connect("metadata", self.on_metadata_changed, None)
         self.manager.manage_player(player)
         self.on_metadata_changed(player, player.props.metadata)
+        if player.props.player_name == "spotify":
+            GLib.timeout_add(500, self.poll_volume, player)
+
+    def poll_volume(self, player):
+        vol = player.props.volume
+        if getattr(player, "_last_volume", None) != vol:
+            player._last_volume = vol
+            self.on_metadata_changed(player, player.props.metadata)
+        return True  # keep repeating
 
     def get_players(self) -> List[Player]:
         return self.manager.props.players
