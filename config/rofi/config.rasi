@@ -16,4 +16,10 @@ configuration{
 
 //@theme "/home/leo/.config/rofi/themes/catppuccin-mocha.rasi"
 
-@theme "/home/leo/.config/rofi/themes/catppuccin-default.rasi"
+//@theme "/home/leo/.config/rofi/themes/catppuccin-default.rasi"
+
+//@theme "/home/leo/.local/share/rofi/themes/rounded-pink-dark.rasi"
+
+//@theme "/home/leo/.config/rofi/themes/rounded-catppuccin.rasi"
+
+@theme "/home/leo/.config/rofi/themes/rounded-catppuccin.rasi"
