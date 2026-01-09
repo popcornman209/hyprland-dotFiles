@@ -5,7 +5,7 @@ configs=("fastfetch" "hypr" "mako" "rofi" "waybar" "nvim")
 echo "copying configs..."
 for config in "${configs[@]}"; do
 	echo "	copying .config/$config..."
-	cp -r ~/.config/$config config/
+	rsync -a --delete ~/.config/$config config/
 done
 
 echo "copying wallpapers..."
