@@ -9,10 +9,10 @@ for config in "${configs[@]}"; do
 done
 
 echo "copying wallpapers..."
-cp -r ~/.local/share/wallpapers/* wallpapers/
+rsync -a --delete ~/.local/share/wallpapers/* wallpapers/
 
 echo "copying scripts.."
-cp -r ~/Documents/scripts/* scripts/
+rsync -a --delete ~/Documents/scripts/* scripts/
 
 if [[ -n "$1" ]]; then
 	echo "updating github..."
