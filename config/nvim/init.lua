@@ -64,6 +64,16 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to the right window'
 vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-i>', '<C-w>k', { desc = 'Move focus to the upper window' })
 
+-- Remap navigation keys
+vim.keymap.set({ 'n', 'v' }, 'i', 'k', { noremap = true }) -- i moves up
+vim.keymap.set({ 'n', 'v' }, 'k', 'j', { noremap = true }) -- k moves down
+vim.keymap.set({ 'n', 'v' }, 'j', 'h', { noremap = true }) -- j moves left
+vim.keymap.set({ 'n', 'v' }, 'l', 'l', { noremap = true }) -- l stays right
+
+-- Since 'i' is now up, remap insert mode to something else
+vim.keymap.set('n', 'h', 'i', { noremap = true }) -- h for insert (common choice)
+vim.keymap.set('n', 'H', 'I', { noremap = true }) -- H for insert at line start
+
 --resize windows with ctrl arrow keys
 vim.keymap.set('n', '<C-Right>', '<C-w>>', { desc = 'Increase window width' })
 vim.keymap.set('n', '<C-Left>', '<C-w><', { desc = 'Decrease window width' })
@@ -150,6 +160,20 @@ require('lazy').setup({
       filesystem = {
         filtered_items = {
           visible = true,
+        },
+        window = {
+          mappings = {
+            ['i'] = 'noop', -- Let global keybinding handle this
+            ['k'] = 'noop', -- Let global keybinding handle this
+            ['I'] = 'show_file_details', -- Capital I for file details
+          },
+        },
+      },
+      window = {
+        mappings = {
+          ['i'] = 'noop',
+          ['k'] = 'noop',
+          ['I'] = 'show_file_details',
         },
       },
     },
@@ -818,19 +842,19 @@ require('mini.splitjoin').setup()
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree<CR>', { desc = 'open neo tree' })
 
 -- Suppress the deprecation warning
-local notify_save = vim.notify
-vim.notify = function(...) end
+-- local notify_save = vim.notify
+-- vim.notify = function(...) end
+--
+-- local lspconfig = require 'lspconfig'
+--
+-- lspconfig.lua_ls.setup {
+--   settings = {
+--     Lua = {
+--       runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+--       workspace = { library = { ['/home/leo/.local/share/lua-ls/cc-tweaked/library'] = true }, checkThirdParty = false },
+--       telemetry = { enable = false },
+--     },
+--   },
+-- }
 
-local lspconfig = require 'lspconfig'
-
-lspconfig.lua_ls.setup {
-  settings = {
-    Lua = {
-      runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-      workspace = { library = { ['/home/leo/.local/share/lua-ls/cc-tweaked/library'] = true }, checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-}
-
-vim.notify = notify_save
+-- vim.notify = notify_save
