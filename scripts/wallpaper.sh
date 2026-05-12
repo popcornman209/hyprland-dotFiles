@@ -34,7 +34,7 @@ browse() {
     elif [[ "$SELECTED" == */ ]]; then
         browse "$DIR/${SELECTED%/}"
     else
-        swww img "$DIR/$SELECTED"
+        awww img "$DIR/$SELECTED"
     fi
 }
 

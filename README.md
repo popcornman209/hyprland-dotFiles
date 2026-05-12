@@ -28,7 +28,7 @@ hyprland hypridle hyprlock waybar foot btop swww rofi imagemagick power-profiles
 ```
 and aur:
 ```
-rofi-bluetooth-git light ttf-jetbrains-mono-nerd ttf-cascadia-mono-nerd
+rofi-bluetooth-git light ttf-jetbrains-mono-nerd ttf-cascadia-mono-nerd grimblast-git
 ```
 note if your brightness keys dont work, you need to allow "light" to run without sudo:
 ```

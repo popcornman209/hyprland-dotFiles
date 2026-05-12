@@ -108,6 +108,10 @@ vim.keymap.set('n', '<C-S-PageUp>', function()
   vim.cmd 'close'
 end, { noremap = true, silent = true })
 
+-- Keep visual mode after indent
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+
 -- NOTE: basic autocommands, See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
