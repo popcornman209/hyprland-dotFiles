@@ -112,6 +112,26 @@ end, { noremap = true, silent = true })
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 
+-- NOTE:
+-- COMMNANDS!
+local cmds = {
+  W = 'w',
+  Wa = 'wa',
+  WA = 'wa',
+
+  Q = 'q',
+  Qa = 'qa',
+  QA = 'qa',
+
+  X = 'x',
+  Xa = 'xa',
+  XA = 'xa',
+}
+
+for lhs, rhs in pairs(cmds) do
+  vim.api.nvim_create_user_command(lhs, rhs, {})
+end
+
 -- NOTE: basic autocommands, See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
