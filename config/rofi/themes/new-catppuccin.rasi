@@ -1,0 +1,103 @@
+//█▀█ █▀█ █▀▀ █   ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀
+//█▀▄ █▄█ █▀  █    █  █▀█ █🬰🬭 █ ▀ █ █🬰🬭
+// - Leo :3
+
+@import "catppuccin-mocha"
+
+* {
+    font:   "CaskaydiaMono Nerd Font 12";
+
+    background-color:   @mantle;
+    text-color:         @text;
+}
+
+window {
+    location:       center;
+    width:          360;
+    border-radius:  10px;
+    border:         3px;
+    border-color: @pink;
+    background-color:   @mantle;
+}
+
+mainbox {
+    padding:    12px;
+}
+
+inputbar {
+    background-color:   @base;
+    border-color:       @pink;
+
+    border:         1px;
+    border-radius:  5px;
+
+    padding:    5px 8px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @subtext0;
+    background-color: inherit;
+}
+prompt {
+    background-color: inherit;
+}
+
+message {
+    margin:             10px 0 0;
+    border-radius:      5px;
+    border:             1px;
+    border-color:       @red;
+}
+
+textbox {
+    padding:    10px 10px;
+}
+
+listview {
+    border-radius:      5px;
+    border:             1px;
+    border-color:       @pink;
+
+    margin:     10px 0 0;
+    padding:    5px 5px;
+    columns:    1;
+
+    fixed-height: false;
+}
+
+element {
+    padding:        5px 5px;
+    border-radius:  5px;
+}
+
+element selected normal, element selected active {
+    background-color:   @pink;
+    text-color: @crust;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+    background-color: inherit;
+}
+
+element-text {
+    text-color: inherit;
+    background-color: inherit;
+}
+
+mode-switcher {
+    margin: 10px 0 0;
+}
+button {
+    padding: 5px;
+    margin: 0px;
+}
+button selected {
+    border:1px;
+    border-radius:5px;
+    border-color:@pink;
+}

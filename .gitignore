@@ -1,2 +1,4 @@
 /wallpapers/personal/
 /scripts/live/
+/config/hypr/custom.lua
+/config/hypr/custom_append.lua

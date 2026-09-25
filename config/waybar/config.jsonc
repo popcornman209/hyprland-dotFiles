@@ -75,8 +75,9 @@
         "tooltip": false
     },
     "battery": {
+        "bat": "BAT1",
         "states": {
-            // "good": 95,
+            //"good": 85,
             "warning": 30,
             "critical": 15
         },
