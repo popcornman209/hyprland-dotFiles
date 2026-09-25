@@ -28,7 +28,7 @@ for _, import in ipairs(required_imports) do
 end
 
 -- if a custom.lua file exists, require it. this is so you can modify your settings without losing ability to git pull.
-if is_file_exists("~/.config/hypr/custom.lua") then
+if DoesFileExist("~/.config/hypr/custom.lua") then
 	require("custom")
 end
 
@@ -73,7 +73,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- same as the other custom.lua file, but this runs after everything so modify anything else here.
-if is_file_exists("~/.config/hypr/custom_append.lua") then
+if DoesFileExist("~/.config/hypr/custom_append.lua") then
 	require("custom_append")
 end
 

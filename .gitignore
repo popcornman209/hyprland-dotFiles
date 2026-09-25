@@ -1,4 +1,5 @@
 /wallpapers/personal/
-/scripts/live/
+/scripts/settings_changer/*.json
+/scripts/settings_changer/current.txt
 /config/hypr/custom.lua
 /config/hypr/custom_append.lua

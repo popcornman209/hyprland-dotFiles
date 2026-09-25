@@ -30,7 +30,8 @@ function ToggleAnimations()
 end
 
 -- got this from https://github.com/end-4/dots-hyprland/blob/main/dots/.config/hypr/hyprland/lib/init.lua
-function is_file_exists(name)
+-- renamed it tho to stop nvim from warning me about shit
+function DoesFileExist(name)
 	local f = io.open(name, "r")
 	if f ~= nil then
 		io.close(f)

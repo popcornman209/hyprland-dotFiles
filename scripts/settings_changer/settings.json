@@ -1,0 +1,10 @@
+{
+	"check interval": 3,
+	"usb device": "TC Electronic GoXLR",
+	"monitor name": "eDP-1",
+	"monitor refresh rates": [
+		165.0,
+		60.002
+	],
+	"monitor resolution": "2560x1600"
+}

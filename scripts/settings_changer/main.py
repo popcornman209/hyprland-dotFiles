@@ -23,17 +23,13 @@ if no args are applied, itll just be the daemon, if args are applied it could do
 -pc -> cycles power profiles
 -t {device} -> changes the device detected for testing purposes
 
+the below options are for people who dont dock their laptops, and dont run this as a daemon. just run it once to switch profiles
+-s -> startup, prompts the user which to apply (does not save current effects)
+-c -> change, manually runs what the daemon would normally do when docked status changes.
+
 these next args should be after the ones mentioned above
 if you add -m on the end it mutes the notification, and -l logs to console
 '''
-
-CHECK_INTERVAL = 3 #in seconds
-USB_DEVICE = "TC Electronic GoXLR" # device checked through lsusb to detect if laptop is docked
-
-
-MONITOR_NAME = "eDP-1"
-MONITOR_REFRESH_RATES = [165.0,60.002] # for toggling between the two (first is default)
-MONITOR_RESOLUTION = "2560x1600" #{} in place for the refresh rate, to be formatted later (same formatting as hyprland config file)
 
 POWER_PROFILES = ["power-saver","balanced","performance"]
 
@@ -42,8 +38,20 @@ from datetime import datetime
 
 args = sys.argv
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+with open(script_dir+"/settings.json", "r") as f:
+    settings = json.load(f)
+CHECK_INTERVAL = settings["check interval"]
+USB_DEVICE = settings["usb device"]
+MONITOR_NAME = settings["monitor name"]
+MONITOR_REFRESH_RATES = settings["monitor refresh rates"]
+MONITOR_RESOLUTION = settings["monitor resolution"]
+
 should_log = "-l" in args
 should_notify = "-m" not in args
+
+docked_config = script_dir+"/docked.json"
+undocked_config = script_dir+"/undocked.json"
 
 get_output = lambda command: subprocess.check_output(command, shell=True, text=True)
 def notify(title, message):
@@ -60,16 +68,30 @@ def find_index(lst, value):
     except ValueError:
         return None
 
+def rofi(message, items):
+    log(f'asking "{message}"')
+    return subprocess.run(
+        f'rofi -dmenu -p "{message}"',
+        shell=True, input="\n".join(items), capture_output=True, text=True
+    ).stdout.strip()
+
 def confirm(message):
     log(f'confirming "{message}"')
-    result = subprocess.run(
-        f'rofi -dmenu -p "{message}"',
-        shell=True, input="Yes\nNo", capture_output=True, text=True
-    ).stdout.strip()
-    return result == "Yes"
+    return rofi(message, ["Yes","No"]) == "Yes"
 
 def get_docked():
     return USB_DEVICE in get_output("lsusb")
+
+def get_current_profile():
+    if os.path.exists(script_dir+"/current.txt"):
+        with open(script_dir+"/current.txt", "r") as f:
+            return True, "True" in f.read()
+    else:
+        return False, False
+
+def set_current_profile(new):
+    with open(script_dir+"/current.txt", "w") as f:
+        f.write(str(new))
 
 def get_locked():
     return "yes" in get_output("loginctl show-session $(loginctl show-user $(whoami) -p Display --value) -p LockedHint --value")
@@ -172,6 +194,21 @@ class SettingsProfile:
         self.brightness = values["brightness"]
         log(f"Loaded {path}")
 
+def switch_profiles(new_docked, profile, other_profile):
+    old_config = undocked_config if new_docked else docked_config
+    new_config = docked_config if new_docked else undocked_config
+
+    # make sure they are up to date
+    other_profile.load_settings(new_config)
+    profile.get_current()
+    #switcch em around
+    other_profile, profile = profile, other_profile
+    profile.apply_values()
+    other_profile.save_settings(old_config)
+    notify("Docked profile", "switched to profile: "+ ("Docked" if new_docked else "Portable"))
+    log(f"switched profiles, now: {new_docked}")
+
+
 if __name__ == "__main__":
     '''
     if len(args) > 1 and args[1] == "-t":
@@ -195,18 +232,30 @@ if __name__ == "__main__":
             new_profile = POWER_PROFILES[(id+1) % len(POWER_PROFILES)] # cycle power profiles + wrap around
             set_powerProfile((new_profile))
             if should_notify: notify("Power profile changed",f"set profile to: {new_profile}")
-    else: # main daemon
-        if "-t" in args:
-            USB_DEVICE = args[2]
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        if not os.path.exists(script_dir+"/live"):
-            os.mkdir(script_dir+"/live")
-
+    elif len(args) > 1 and args[1] == "-s":
+        profile = SettingsProfile()
+        exists, docked = get_current_profile()
+        if not exists:
+            docked = rofi("Pick a power profile", ["Docked", "Undock"]) == "Docked"
+        profile.load_settings(docked_config if docked else undocked_config)
+        profile.apply_values()
+    elif len(args) > 1 and args[1] == "-c":
         profile = SettingsProfile()
         other_profile = SettingsProfile()
-
-        docked_config = script_dir+"/live/settings_changer_daemon_d.json"
-        undocked_config = script_dir+"/live/settings_changer_daemon_u.json"
+        exists, docked = get_current_profile()
+        if not exists:
+            docked = rofi("Pick a power profile", ["Docked", "Undock"]) == "Docked"
+        else:
+            docked = not docked
+        switch_profiles(docked, profile, other_profile)
+        set_current_profile(docked)
+    else: # main daemon
+        if os.path.exists(script_dir+"/current.txt"):
+            os.remove(script_dir+"/current.txt")
+        if "-t" in args:
+            USB_DEVICE = args[2]
+        profile = SettingsProfile()
+        other_profile = SettingsProfile()
 
         if not os.path.exists(docked_config):
             profile.save_settings(docked_config)
@@ -235,18 +284,7 @@ if __name__ == "__main__":
                     time.sleep(was_locked)
                     if confirm("Switch to {} profile?".format("Docked" if docked else "Portable")): # TODO
                         if docked == get_docked(): # make sure nothing has changed since asked user
-                            old_config = undocked_config if docked else docked_config
-                            new_config = docked_config if docked else undocked_config
-
-                            # make sure they are up to date
-                            other_profile.load_settings(new_config)
-                            profile.get_current()
-                            #switcch em around
-                            other_profile, profile = profile, other_profile
-                            profile.apply_values()
-                            other_profile.save_settings(old_config)
-                            notify("Docked profile", "switched to profile: "+ ("Docked" if docked else "Portable"))
-                            log(f"switched profiles, now: {docked}")
+                            switch_profiles(docked, profile, other_profile)
                         else:
                             docked = get_docked()
                             notify("Docked profile", "Skipped swithcing profiles.")
