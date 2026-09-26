@@ -8,11 +8,13 @@ all other settings are in the files listed below in required_imports (+ ".lua" a
 ]]
 
 -- TODO:
--- changing hyprland config resets some values, messing with settings_changer
--- get rid of smart placement thing
+-- smart placement toggle???
 -- waybar workspace buttons broken
+-- waybar crashing :(
 -- notifications only show on one monitor
 -- lua refresh rate cycle doesnt work (functions.lua)
+
+ScriptsFolder = "~/Documents/scripts/"
 
 local required_imports = {
 	"functions",
@@ -28,6 +30,7 @@ for _, import in ipairs(required_imports) do
 end
 
 -- if a custom.lua file exists, require it. this is so you can modify your settings without losing ability to git pull.
+-- like lets say you wanted to change your main monitor settings, you could overwite MainMonitor from monitors.lua in custom.lua and still be able to git pull.
 if DoesFileExist("~/.config/hypr/custom.lua") then
 	require("custom")
 end
@@ -76,5 +79,7 @@ end)
 if DoesFileExist("~/.config/hypr/custom_append.lua") then
 	require("custom_append")
 end
+
+hl.exec_cmd(ScriptsFolder .. "settings_changer/main.py -s")
 
 Notify("Config", "Config loaded!")

@@ -41,6 +41,7 @@ args = sys.argv
 script_dir = os.path.dirname(os.path.abspath(__file__))
 with open(script_dir+"/settings.json", "r") as f:
     settings = json.load(f)
+USE_USB = settings["use usb check"]
 CHECK_INTERVAL = settings["check interval"]
 USB_DEVICE = settings["usb device"]
 MONITOR_NAME = settings["monitor name"]
@@ -234,11 +235,16 @@ if __name__ == "__main__":
             if should_notify: notify("Power profile changed",f"set profile to: {new_profile}")
     elif len(args) > 1 and args[1] == "-s":
         profile = SettingsProfile()
-        exists, docked = get_current_profile()
-        if not exists:
-            docked = rofi("Pick a power profile", ["Docked", "Undock"]) == "Docked"
+        if USE_USB:
+            docked = get_docked()
+        else:
+            exists, docked = get_current_profile()
+            if not exists:
+                docked = rofi("Pick a power profile", ["Docked", "Undock"]) == "Docked"
         profile.load_settings(docked_config if docked else undocked_config)
         profile.apply_values()
+        notify("Docked profile", "enabled profile: "+ ("Docked" if docked else "Portable"))
+        log(f"loading values and applying, docked: {docked}")
     elif len(args) > 1 and args[1] == "-c":
         profile = SettingsProfile()
         other_profile = SettingsProfile()

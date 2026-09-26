@@ -1,5 +1,4 @@
 MainMod = "SUPER + "
-local scripts_folder = "~/Documents/scripts/"
 
 Keybinds = {
 	-- ▄▀█ █▀█ █▀█ █▀
@@ -38,21 +37,21 @@ Keybinds = {
 	-- ▀█▀ █▀█ █▀▀ █▀▀ █   █▀▀ █▀
 	--  █  █▄█ █▄█ █▄█ █▄▄ █🬰🬭 ▄█
 	[MainMod .. "V"] = "~/.config/waybar/scripts/toggleVpn.sh", -- toggle vpn
-	[MainMod .. "B"] = scripts_folder .. "toggleWaybar.sh", -- toggle waybar
-	[MainMod .. "N"] = scripts_folder .. "hyprsunset.sh toggle", -- screen temperature filter
-	[MainMod .. "P"] = scripts_folder .. "settings_changer.py -pc", -- power profile cycle
+	[MainMod .. "B"] = ScriptsFolder .. "toggleWaybar.sh", -- toggle waybar
+	[MainMod .. "N"] = ScriptsFolder .. "hyprsunset.sh toggle", -- screen temperature filter
+	[MainMod .. "P"] = ScriptsFolder .. "settings_changer/main.py -pc", -- power profile cycle
 	[MainMod .. "K"] = ToggleTouchpadWhileTyping, -- toggle touchpad while typing
 	[MainMod .. "SHIFT + A"] = ToggleAnimations, -- toggle animations
-	[MainMod .. "SHIFT + R"] = scripts_folder .. "settings_changer.py -rc", -- cycle refresh rates
+	[MainMod .. "SHIFT + R"] = ScriptsFolder .. "settings_changer/main.py -rc", -- cycle refresh rates
 
 	-- ▀█▀ █▀█ █▀█ █   █▀
 	--  █  █▄█ █▄█ █▄▄ ▄█
 	[MainMod .. "SHIFT + P"] = "hyprpicker -a", -- color picker
 	["Print"] = "grimblast --freeze copy area", -- screenshot
-	["XF86Explorer"] = scripts_folder .. "wallpaper.sh", -- wallpaper picker
-	["XF86Tools"] = scripts_folder .. "configure.sh", -- quick edit config files
+	["XF86Explorer"] = ScriptsFolder .. "wallpaper.sh", -- wallpaper picker
+	["XF86Tools"] = ScriptsFolder .. "configure.sh", -- quick edit config files
 	[MainMod .. "SHIFT + O"] = FindOffscreenWindows, -- find windows that went off screen, made to fix a openrocket bug
-	[MainMod .. "SHIFT + B"] = scripts_folder .. "big_font.py -r",
+	[MainMod .. "SHIFT + B"] = ScriptsFolder .. "big_font.py -r",
 
 	-- █▀▀   █▄▀ █▀▀ █▄█ █▀
 	-- █▀    █ █ █🬰🬭  █  ▄█
