@@ -1,4 +1,5 @@
 {
+	"use usb check": true,
 	"check interval": 3,
 	"usb device": "TC Electronic GoXLR",
 	"monitor name": "eDP-1",
