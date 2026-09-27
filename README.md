@@ -9,6 +9,7 @@ also if anybody ever decides to use anything from this lmk id love to see it!
 
 > [!WARNING]
 > check the keybinds in ~/.config/hypr/kebinds.conf, many might be set to function keys that your keyboard might not have!
+> also, many of these scripts are just useful tools for me! feel free to just remove any you dont want.
 
 ### Method 1: link files
 
