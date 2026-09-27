@@ -3,9 +3,9 @@
 OUTPUT_PATH = "/home/leo/Music/OnTheSpotToRockbox/"
 OTS_DOWNLOAD_PATH = "/home/leo/Music/OnTheSpot/"
 OTS_PATH = "/home/leo/Documents/programs/onthespot/"
+IPOD_PATH = "/run/media/leo/IPOD/"
 
-
-import webbrowser, os, re, subprocess
+import webbrowser, os, re, subprocess, time
 
 def sanitize_fat32(name):
     return re.sub(r'[\\/:*?"<>|]', "_", name).rstrip(" .")
@@ -74,12 +74,28 @@ def convert_m3u(name):
 
     return mp3_files
 
+def wait_for_ipod():
+    mount_point = IPOD_PATH.rstrip("/")
+    print("Waiting for IPod...")
+    while not os.path.ismount(mount_point):
+        time.sleep(2)
+    # mount can register before the filesystem is actually browsable, so
+    # confirm it's readable before handing off to rsync
+    while True:
+        try:
+            os.listdir(mount_point)
+            break
+        except OSError:
+            time.sleep(1)
+    print("IPod ready.")
+
 while True:
     option = input("""1: Open tunemymusic spotify -> youtube converter
 2: open youtube music
 3: open OnTheSpot
 4: convert entire OnTheSpot output to ipod
 5: convert specific playlist to ipod
+6: sync converted folder to IPod
 pick option: """)
     if option == "1":
         webbrowser.open('https://www.tunemymusic.com/transfer/spotify-to-youtube-music')
@@ -88,7 +104,7 @@ pick option: """)
     elif option == "3":
         os.system(f"PYTHONPATH={OTS_PATH}src {OTS_PATH}venv/bin/python -m onthespot.gui")
     elif option == "4":
-        m3u_files = os.listdir(OTS_DOWNLOAD_PATH+"M3U/")
+        m3u_files = [f for f in os.listdir(OTS_DOWNLOAD_PATH+"M3U/") if not f.startswith("Album - ")]
         for file in m3u_files:
             print(f"converting: {file}")
             convert_m3u(file)
@@ -108,7 +124,12 @@ pick option: """)
             convert_mp3(file)
         print(f"Complete! transfer all files from {OUTPUT_PATH} into your ipods root directory!")
     elif option == "6":
-        convert_mp3("/home/leo/Music/OnTheSpot/Tracks/54 Ultra/[2021] Should I Let This Go?/Should I Let This Go?.mp3")
+        wait_for_ipod()
+        print("Copying new music...")
+        subprocess.run(["rsync", "-rv", "--size-only", OUTPUT_PATH + "Music/", IPOD_PATH + "Music/"])
+        print("Replacing playlists...")
+        subprocess.run(["rsync", "-rtv", "--delete", OUTPUT_PATH + "Playlists/", IPOD_PATH + "Playlists/"])
+        print("Sync complete!")
     else:
         print("quitting...")
         break
