@@ -50,6 +50,12 @@ function Rebind(old, new)
 		KeybindOptions[old] = nil
 	end
 end
+function Unbind(...)
+	for _, key in ipairs({ ... }) do
+		Keybinds[key] = nil
+		KeybindOptions[key] = nil
+	end
+end
 
 -- TODO: make this... work... (currently uses settings_changer.py)
 local currentRefreshRateID = 1
