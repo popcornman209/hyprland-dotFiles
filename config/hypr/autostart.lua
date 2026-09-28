@@ -7,7 +7,7 @@ AutostartProcesses = {
 	"hypridle", -- sleep, locking, etc
 	"hyprsunset", -- screen temp filter
 	"playerctld", -- for playerctl, detects last played media
-	"~/Documents/scripts/settings_changer/main.py", -- daemon to change settings if device connected
+	ScriptsFolder .. "settings_changer/main.py", -- daemon to change settings if device connected
 	"systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target", --themeing related
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", -- auth agent
 }

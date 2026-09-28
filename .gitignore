@@ -3,3 +3,4 @@
 /scripts/settings_changer/current.txt
 /config/hypr/custom.lua
 /config/hypr/custom_append.lua
+/config/nvim/lazy-lock.json

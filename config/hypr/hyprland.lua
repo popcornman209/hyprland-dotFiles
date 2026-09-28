@@ -15,7 +15,8 @@ all other settings are in the files listed below in required_imports (+ ".lua" a
 -- notifications only show on one monitor
 -- lua refresh rate cycle doesnt work (functions.lua)
 
-ScriptsFolder = "~/Documents/scripts/"
+HOME = os.getenv("HOME") .. "/"
+ScriptsFolder = HOME .. "Documents/scripts/"
 
 local required_imports = {
 	"functions",
@@ -32,7 +33,7 @@ end
 
 -- if a custom.lua file exists, require it. this is so you can modify your settings without losing ability to git pull.
 -- like lets say you wanted to change your main monitor settings, you could overwite MainMonitor from monitors.lua in custom.lua and still be able to git pull.
-if DoesFileExist("~/.config/hypr/custom.lua") then
+if DoesFileExist(HOME .. ".config/hypr/custom.lua") then
 	require("custom")
 end
 
@@ -77,7 +78,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- same as the other custom.lua file, but this runs after everything so modify anything else here.
-if DoesFileExist("~/.config/hypr/custom_append.lua") then
+if DoesFileExist(HOME .. ".config/hypr/custom_append.lua") then
 	require("custom_append")
 end
 

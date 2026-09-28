@@ -16,7 +16,7 @@ Keybinds = {
 	-- █▀█ █▀█ █ █ █ █▀▀ █▀█
 	-- █▀▀ █▄█ ▀▄▀▄▀ █🬰🬭 █▀▄
 	[MainMod .. "ESCAPE"] = "loginctl lock-session", -- lock screen
-	[MainMod .. "SHIFT + ESCAPE"] = "~/Documents/scripts/power.sh", -- power menu
+	[MainMod .. "SHIFT + ESCAPE"] = ScriptsFolder .. "power.sh", -- power menu
 	["XF86Launch5"] = "playerctl pause & loginctl lock-session", -- lock screen and pause (f14)
 	["XF86Launch6"] = "playerctl pause & systemctl suspend", -- keyboard suspend button (f15)
 

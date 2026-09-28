@@ -16,7 +16,7 @@ case "$CHOICE" in
     reboot
     ;;
   "Exit Hyprland")
-  	hyprctl dispatch exit
+  	hyprctl dispatch 'hl.dsp.exit()'
  	;;
   *)
   	echo nothing selected
