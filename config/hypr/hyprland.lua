@@ -8,6 +8,7 @@ all other settings are in the files listed below in required_imports (+ ".lua" a
 ]]
 
 -- TODO:
+-- move workspace to monitor keybind
 -- smart placement toggle???
 -- waybar workspace buttons broken
 -- waybar crashing :(
