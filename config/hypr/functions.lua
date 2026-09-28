@@ -41,6 +41,16 @@ function DoesFileExist(name)
 	end
 end
 
+-- for custom.lua, not used in this repo atm
+function Rebind(old, new)
+	Keybinds[new] = Keybinds[old]
+	Keybinds[old] = nil
+	if KeybindOptions[old] then
+		KeybindOptions[new] = KeybindOptions[old]
+		KeybindOptions[old] = nil
+	end
+end
+
 -- TODO: make this... work... (currently uses settings_changer.py)
 local currentRefreshRateID = 1
 function CycleMainMonitor()
