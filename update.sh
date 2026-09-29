@@ -8,6 +8,9 @@ for config in "${configs[@]}"; do
 	rsync -a --delete ~/.config/$config config/
 done
 
+echo "copying fish config..."
+rsync -a ~/.config/fish/config.fish config/fish/
+
 echo "copying wallpapers..."
 rsync -a --delete ~/.local/share/wallpapers/ wallpapers/
 
