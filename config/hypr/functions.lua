@@ -56,6 +56,13 @@ function Unbind(...)
 		KeybindOptions[key] = nil
 	end
 end
+function RemoveFromList(list, value)
+	for i = #list, 1, -1 do
+		if list[i] == value then
+			table.remove(list, i)
+		end
+	end
+end
 
 -- TODO: make this... work... (currently uses settings_changer.py)
 local currentRefreshRateID = 1

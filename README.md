@@ -24,6 +24,8 @@ the `custom.lua` file gets imported before applying changes, so you can modify a
 
 anything else you want to do can be with `custom_append.lua`, which gets run after everything.
 
+same story with custom.jsonc for waybar
+
 NOTE: this feature is mostly just intended for me so I can use my config across computers, so sorry you can only modify hyprland. if you want me to change that feel free to reach out!
 
 ### Method 2: just copy em
@@ -42,7 +44,7 @@ when it comes to dependancies, I havent tested if this is everything needed, the
 
 pacman:
 ```
-hyprland hypridle hyprlock hyprsunset hyprpicker waybar foot btop swww rofi imagemagick power-profiles-daemon brightnessctl wl-clipboard grim slurp networkmanager pulseaudio mako libnotify
+hyprland hypridle hyprlock hyprsunset hyprpicker waybar foot btop swww rofi imagemagick power-profiles-daemon brightnessctl wl-clipboard grim slurp networkmanager pulseaudio mako libnotify python-gobject usbutils
 ```
 and aur:
 ```

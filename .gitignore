@@ -4,3 +4,4 @@
 /config/hypr/custom.lua
 /config/hypr/custom_append.lua
 /config/nvim/lazy-lock.json
+/config/waybar/custom.jsonc
