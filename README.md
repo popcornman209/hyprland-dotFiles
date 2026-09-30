@@ -44,7 +44,7 @@ when it comes to dependancies, I havent tested if this is everything needed, the
 
 pacman:
 ```
-hyprland hypridle hyprlock hyprsunset hyprpicker waybar foot btop swww rofi imagemagick power-profiles-daemon brightnessctl wl-clipboard grim slurp networkmanager pulseaudio mako libnotify python-gobject usbutils fastfetch
+hyprland hypridle hyprlock hyprsunset hyprpicker waybar foot btop swww rofi imagemagick power-profiles-daemon brightnessctl wl-clipboard grim slurp networkmanager pulseaudio mako libnotify python-gobject usbutils fastfetch polkit-gnome
 ```
 and aur:
 ```
